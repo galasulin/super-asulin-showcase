@@ -26,6 +26,11 @@
 
 <br/>
 
+**[✨ Live interactive showcase →](https://galasulin.github.io/super-asulin-showcase/)**
+*Try the sell‑by‑weight slider and the smart‑basket demo — faithful recreations, demo data only.*
+
+<br/>
+
 > **Showcase repository** — this repo documents the project's capabilities and engineering decisions.
 > No source code, credentials, or business data are published here.
 
