@@ -1,0 +1,601 @@
+<title>Super Asulin — Premium RTL Grocery E‑Commerce Case Study</title>
+<style>
+  :root{
+    --ink:#0B1A11; --forest:#11261B; --forest-2:#16301F; --green:#2F8F5B; --green-deep:#1F7A4D; --green-bright:#4CB878;
+    --honey:#E7B23C; --honey-deep:#C08A1C; --orange:#E65F2B; --orange-deep:#C84A1C;
+    --paper:#F7F5EF; --card:#FFFFFF; --line:#E6E1D4; --line-soft:#EFEBDF;
+    --ink-2:#51624F; --ink-3:#8B978B;
+    --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","SFMono-Regular",Menlo,Consolas,monospace;
+    --wrap:1120px; --ease:cubic-bezier(.22,.8,.3,1);
+  }
+  *{box-sizing:border-box}
+  .fc{font-family:var(--sans);color:var(--forest);background:var(--paper);line-height:1.6;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .fc h1,.fc h2,.fc h3,.fc h4{margin:0;line-height:1.06;letter-spacing:-.025em;text-wrap:balance;font-weight:800}
+  .fc p{margin:0}
+  .fc button{font-family:inherit}
+  .fc :focus-visible{outline:3px solid var(--honey);outline-offset:2px;border-radius:6px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+  .eyebrow{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--green)}
+  .lead{font-size:clamp(16px,1.6vw,19px);color:var(--ink-2);line-height:1.75}
+  .num{font-variant-numeric:tabular-nums}
+
+  /* reveal-on-scroll (JS opt-in so no-JS stays visible) */
+  .js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .js .rv.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+
+  /* ================= HERO ================= */
+  .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden;isolation:isolate}
+  .hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.9}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(130% 95% at 82% -12%,transparent 38%,rgba(6,15,10,.55) 100%),
+    linear-gradient(180deg,transparent 52%,rgba(6,15,10,.9) 100%)}
+  .hero .wrap{position:relative;z-index:2;padding-block:clamp(72px,11vw,132px)}
+  .hero-badge{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:99px;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.17);backdrop-filter:blur(10px);
+    font-size:13px;font-weight:600;color:#dff1e6}
+  .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green-bright);
+    box-shadow:0 0 0 4px rgba(76,184,120,.22);animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{50%{box-shadow:0 0 0 7px rgba(76,184,120,.08)}}
+  @media(prefers-reduced-motion:reduce){.hero-badge .dot{animation:none}}
+  .hero h1{font-size:clamp(50px,9vw,112px);font-weight:900;letter-spacing:-.05em;margin:28px 0 0}
+  .hero h1 .cart{background:linear-gradient(115deg,var(--honey) 20%,#f5d489 55%,var(--honey) 85%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .tag{font-size:clamp(19px,2.5vw,29px);font-weight:650;color:#ecfaf1;margin-top:18px;max-width:26ch;
+    letter-spacing:-.015em;line-height:1.28}
+  .hero .sub{margin-top:22px;max-width:58ch;color:#a7c2b2;font-size:16px;line-height:1.75}
+  .hero .rtl-nod{display:inline-block;margin-inline-start:10px;padding:3px 12px;border-radius:8px;
+    background:rgba(231,178,60,.14);border:1px solid rgba(231,178,60,.35);color:var(--honey);
+    font-size:15px;font-weight:700;direction:rtl}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+  .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:11px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);font-size:13.5px;font-weight:600;color:#e6f2ea}
+  .chip b{color:var(--honey);font-weight:800}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:48px;
+    background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.13);border-radius:18px;overflow:hidden}
+  .stat{background:rgba(9,20,13,.62);padding:24px 22px;backdrop-filter:blur(8px)}
+  .stat .n{font-size:clamp(28px,3.6vw,40px);font-weight:900;letter-spacing:-.03em;color:#fff}
+  .stat .n em{font-style:normal;color:var(--honey)}
+  .stat .l{font-size:12.5px;color:#9dbcaa;margin-top:5px;font-weight:600}
+
+  /* ================= SECTION SHELL ================= */
+  .section{padding-block:clamp(60px,8vw,100px)}
+  .section-head{max-width:66ch}
+  .section-head h2{font-size:clamp(31px,4.8vw,52px);font-weight:900;letter-spacing:-.04em;margin-top:14px}
+  .section-head p{margin-top:16px}
+  .band{background:var(--forest);color:#fff}
+  .band .eyebrow{color:var(--honey)}
+  .band .section-head p,.band .lead{color:#b4cfbf}
+
+  /* ================= BRIEF ================= */
+  .brief{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:46px}
+  .brief-col{border-radius:20px;padding:30px 28px;position:relative;overflow:hidden}
+  .brief-col.was{background:#EFEBE0;border:1px solid var(--line)}
+  .brief-col.now{background:var(--forest);color:#fff}
+  .brief-col .bk{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+  .brief-col.was .bk{color:#9a917c}
+  .brief-col.now .bk{color:var(--honey)}
+  .brief-col h3{font-size:22px;margin-top:12px;letter-spacing:-.02em}
+  .brief-col ul{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px}
+  .brief-col li{display:flex;gap:11px;font-size:15px;line-height:1.5}
+  .brief-col.was li{color:#6d6a5d}
+  .brief-col.now li{color:#cfe6d8}
+  .brief-col li .m{flex:none;font-weight:900}
+  .brief-col.was li .m{color:#b3a98e}
+  .brief-col.now li .m{color:var(--green-bright)}
+
+  /* ================= FEATURES ================= */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+  .feat{position:relative;padding:30px 28px 32px;border-radius:22px;background:var(--card);
+    border:1px solid var(--line);transition:transform .28s var(--ease),box-shadow .35s var(--ease),border-color .3s;overflow:hidden}
+  .feat::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;
+    background:linear-gradient(90deg,var(--green),var(--honey));opacity:0;transition:opacity .3s}
+  .feat:hover{transform:translateY(-7px);box-shadow:0 28px 56px -26px rgba(17,38,27,.38);border-color:transparent}
+  .feat:hover::before{opacity:1}
+  .feat-ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:27px;
+    background:linear-gradient(150deg,#eaf4ee,#f7f0dc);border:1px solid var(--line-soft)}
+  .feat h3{font-size:20px;margin-top:22px}
+  .feat p{margin-top:10px;color:var(--ink-2);font-size:15px;line-height:1.66}
+
+  /* ================= LIVE DEMOS ================= */
+  .demos{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;align-items:start}
+  .demo{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);border-radius:22px;overflow:hidden}
+  .demo-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;
+    border-bottom:1px solid rgba(255,255,255,.1)}
+  .demo-head b{font-size:15.5px;letter-spacing:-.01em}
+  .demo-live{font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0e2417;
+    background:var(--green-bright);border-radius:99px;padding:4px 11px}
+  .demo-body{padding:22px;direction:rtl;text-align:right}
+  .demo-note{padding:12px 20px 16px;font-size:12px;color:#8fb09d;border-top:1px solid rgba(255,255,255,.08)}
+
+  /* weight widget */
+  .w-card{background:#fff;color:var(--forest);border-radius:16px;padding:20px}
+  .w-name{font-weight:800;font-size:17px}
+  .w-per{font-size:14px;color:var(--green-deep);font-weight:700;margin-top:2px}
+  .w-per span{color:var(--ink-3);font-weight:600;font-size:12px}
+  .w-stepper{display:flex;align-items:center;justify-content:center;gap:0;margin-top:16px}
+  .w-stepper button{width:42px;height:42px;border:1px solid var(--line);background:#F7F5F0;color:var(--green);
+    font-size:21px;font-weight:900;cursor:pointer;line-height:1;transition:.15s}
+  .w-stepper button:hover{background:var(--green);color:#fff}
+  .w-stepper button:first-child{border-radius:0 12px 12px 0}
+  .w-stepper button:last-child{border-radius:12px 0 0 12px}
+  .w-val{min-width:120px;text-align:center;border-block:1px solid var(--line);height:42px;
+    display:flex;align-items:baseline;justify-content:center;gap:5px;padding-top:6px}
+  .w-val b{font-size:22px;font-weight:900;letter-spacing:-.02em}
+  .w-val i{font-style:normal;font-size:13px;color:var(--ink-3)}
+  .w-range{width:100%;margin:18px 0 4px;accent-color:var(--green)}
+  .w-scale{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-3)}
+  .w-presets{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .w-preset{font-size:13px;font-weight:700;padding:7px 14px;border-radius:99px;cursor:pointer;
+    border:1px solid var(--line);background:#fff;color:var(--ink-2);transition:.15s}
+  .w-preset:hover{border-color:var(--green);color:var(--green-deep)}
+  .w-preset.on{background:var(--green);border-color:var(--green);color:#fff}
+  .w-total{display:flex;align-items:center;justify-content:space-between;margin-top:18px;padding-top:16px;
+    border-top:1px dashed var(--line)}
+  .w-total span{font-size:13.5px;color:var(--ink-2);font-weight:600}
+  .w-total b{font-size:24px;font-weight:900;color:var(--green-deep);letter-spacing:-.02em}
+
+  /* basket widget */
+  .b-card{background:#fff;color:var(--forest);border-radius:16px;overflow:hidden}
+  .b-top{background:var(--forest-2);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:11px}
+  .b-top .bi{font-size:22px}
+  .b-top b{font-size:16px;font-weight:900;display:block;line-height:1.15}
+  .b-top small{font-size:11.5px;color:#a9c9b6;font-weight:600}
+  .b-items{padding:6px 18px}
+  .b-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;
+    border-bottom:1px solid var(--line-soft)}
+  .b-row:last-child{border-bottom:0}
+  .b-nm{font-size:14px;font-weight:650}
+  .b-nm small{display:block;font-size:11.5px;color:var(--ink-3);font-weight:600}
+  .b-stp{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;flex:none}
+  .b-stp button{width:30px;height:30px;border:0;background:#F7F5F0;color:var(--green);font-size:16px;
+    font-weight:900;cursor:pointer;line-height:1;transition:.15s}
+  .b-stp button:hover{background:var(--green);color:#fff}
+  .b-stp b{min-width:30px;text-align:center;font-size:14px;font-weight:800}
+  .b-foot{padding:14px 18px 18px;border-top:1px dashed var(--line)}
+  .b-sum{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--ink-2);font-weight:600}
+  .b-sum b{font-size:21px;font-weight:900;color:var(--forest);letter-spacing:-.02em}
+  .b-add{margin-top:12px;width:100%;height:48px;border:0;border-radius:13px;background:var(--orange);color:#fff;
+    font-size:15px;font-weight:800;cursor:pointer;transition:.2s var(--ease);
+    display:flex;align-items:center;justify-content:center;gap:9px}
+  .b-add:hover{background:var(--orange-deep);transform:translateY(-1px)}
+  .b-add.done{background:var(--green-deep)}
+
+  /* ================= MODULES ================= */
+  .mods{margin-top:46px;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--card)}
+  .mod{display:grid;grid-template-columns:64px 56px 1.05fr 2fr;gap:18px;align-items:center;padding:19px 24px;
+    border-top:1px solid var(--line-soft);transition:background .2s}
+  .mod:first-child{border-top:0}
+  .mod:hover{background:#FBFAF5}
+  .mod .no{font-family:var(--mono);font-size:13px;color:var(--ink-3);font-weight:600}
+  .mod .mi{font-size:24px}
+  .mod .mt{font-weight:800;font-size:16.5px;letter-spacing:-.015em}
+  .mod .md{color:var(--ink-2);font-size:14.5px;line-height:1.55}
+
+  /* ================= NOTES ================= */
+  .notes{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:46px}
+  .note{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);border-radius:18px;padding:26px 26px 28px}
+  .note .nk{font-family:var(--mono);font-size:12px;color:var(--honey);letter-spacing:.06em}
+  .note h3{font-size:18.5px;margin-top:10px;letter-spacing:-.015em;color:#fff}
+  .note p{margin-top:11px;font-size:14.5px;line-height:1.7;color:#a9c3b4}
+  .note code{font-family:var(--mono);font-size:12.5px;background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:1px 7px;color:#dff1e6}
+
+  /* ================= ARCHITECTURE ================= */
+  .arch{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;margin-top:46px;align-items:start}
+  pre.tree{margin:0;background:var(--ink);color:#cfe6d8;border-radius:20px;padding:28px 26px;overflow-x:auto;
+    font-family:var(--mono);font-size:13.5px;line-height:1.9;border:1px solid rgba(255,255,255,.08)}
+  pre.tree .b{color:var(--honey);font-weight:700}
+  pre.tree .c{color:#7c9b88}
+  .principles{display:flex;flex-direction:column;gap:14px}
+  .principle{display:flex;gap:15px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;padding:17px 19px}
+  .principle .pi{font-size:21px;line-height:1.2}
+  .principle b{display:block;font-size:15.5px;letter-spacing:-.01em}
+  .principle span{color:var(--ink-2);font-size:14px;line-height:1.55}
+
+  /* ================= DESIGN SYSTEM ================= */
+  .sw-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:46px}
+  .sw{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04)}
+  .sw .chipc{height:88px}
+  .sw .meta{padding:12px 14px}
+  .sw .meta b{font-size:13.5px;display:block;color:#fff}
+  .sw .meta code{font-family:var(--mono);font-size:11.5px;color:#93b3a1}
+  .ds-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+  .ds-note{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:19px 21px}
+  .ds-note h4{font-size:15px;color:#fff}
+  .ds-note p{margin-top:7px;font-size:13.5px;color:#a9c3b4;line-height:1.6}
+
+  /* ================= FOOTER ================= */
+  .foot{background:var(--ink);color:#cfe6d8;text-align:center;padding-block:72px;position:relative;overflow:hidden}
+  .foot .fmark{font-size:38px;font-weight:900;letter-spacing:-.045em;color:#fff}
+  .foot .fmark .cart{color:var(--honey)}
+  .foot p{margin-top:16px;color:#91ae9f;max-width:54ch;margin-inline:auto;font-size:15px;line-height:1.7}
+  .foot .rule{width:70px;height:3px;background:linear-gradient(90deg,var(--green),var(--honey));
+    border-radius:99px;margin:28px auto 0}
+
+  @media(max-width:920px){
+    .feat-grid,.brief,.demos,.notes,.arch,.ds-notes{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .sw-grid{grid-template-columns:repeat(2,1fr)}
+    .mod{grid-template-columns:44px 40px 1fr;gap:12px}
+    .mod .md{grid-column:1/-1}
+  }
+</style>
+
+<div class="fc" id="fcRoot">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <canvas id="aurora" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="hero-badge"><span class="dot"></span>Production case study &nbsp;·&nbsp; live, revenue‑generating store</span>
+      <h1>Super <span class="cart">Asulin</span></h1>
+      <p class="tag">A neighborhood supermarket, re‑engineered from a blank stylesheet.</p>
+      <p class="sub">A fully custom WordPress + WooCommerce platform — hundreds of live products across 80+ departments, a proprietary sell‑by‑weight engine, curated smart baskets, a uniform product spec system, Hebrew cart‑recovery emails, and shop‑floor barcode tooling. Native right‑to‑left, because Hebrew is a first‑class citizen here <span class="rtl-nod">סופר זול אסולין · טרי · עד הבית</span></p>
+      <div class="chips">
+        <span class="chip">WordPress <b>·</b> WooCommerce</span>
+        <span class="chip">PHP <b>·</b> Vanilla JS</span>
+        <span class="chip">RTL <b>·</b> Hebrew‑native</span>
+        <span class="chip">Glassmorphism</span>
+        <span class="chip">SEO <b>/</b> GEO</span>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n num">10</div><div class="l">independent modules</div></div>
+        <div class="stat"><div class="n num">700<em>+</em></div><div class="l">live products · 80+ departments</div></div>
+        <div class="stat"><div class="n num">100<em>%</em></div><div class="l">RTL Hebrew</div></div>
+        <div class="stat"><div class="n num">0</div><div class="l">paid plugins required</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ BRIEF ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="eyebrow">The brief</span>
+        <h2>From generic template to a store worth returning to.</h2>
+        <p class="lead">The goal wasn't a re‑skin — it was a system. Every feature ships as an isolated, toggleable module with graceful fallbacks and no dependency on paid plugins. Disable any module tomorrow; the store keeps selling.</p>
+      </div>
+      <div class="brief">
+        <div class="brief-col was rv">
+          <div class="bk">Before</div>
+          <h3>A template fighting its own plugins</h3>
+          <ul>
+            <li><span class="m">×</span>Generic storefront — visually anonymous, slow to load</li>
+            <li><span class="m">×</span>Fresh produce forced into unit pricing</li>
+            <li><span class="m">×</span>Heavyweight filter &amp; popup plugins stacked on top</li>
+            <li><span class="m">×</span>RTL as an afterthought — mirrored bugs everywhere</li>
+            <li><span class="m">×</span>No structured data, invisible to local search</li>
+          </ul>
+        </div>
+        <div class="brief-col now rv">
+          <div class="bk">After</div>
+          <h3>One coherent, hand‑built system</h3>
+          <ul>
+            <li><span class="m">✓</span>Bespoke design language across every template</li>
+            <li><span class="m">✓</span>True per‑kilogram selling with a live weight slider</li>
+            <li><span class="m">✓</span>Filter, newsletter, carousels &amp; popups — built native</li>
+            <li><span class="m">✓</span>RTL‑first layout, carousels and interactions</li>
+            <li><span class="m">✓</span>GroceryStore schema + automated meta for every product</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow rv">Signature capabilities</span>
+      <div class="feat-grid">
+        <article class="feat rv"><div class="feat-ic">⚖️</div><h3>Sell‑by‑Weight Engine</h3><p>Per‑product pricing per kilogram. A live slider — 0.5 to 10 kg in ½‑kg steps — recalculates in real time and flows cleanly through cart, checkout and order records.</p></article>
+        <article class="feat rv"><div class="feat-ic">🧺</div><h3>Smart Ready‑Baskets</h3><p>Eight curated bundles — Shabbat, BBQ, Breakfast, Monthly Staples and more. Per‑item steppers, one‑tap “add everything”, and stock‑aware graceful skipping.</p></article>
+        <article class="feat rv"><div class="feat-ic">📋</div><h3>Uniform Product Spec</h3><p>One template for every product — kosher &amp; dietary badges, full nutrition table, ingredients &amp; allergens, provenance and packaging. Identical layout with or without data.</p></article>
+        <article class="feat rv"><div class="feat-ic">💎</div><h3>Liquid‑Glass UI</h3><p>Forest‑green &amp; honey palette with orange reserved strictly for CTAs. Sticky glass header, live mega‑menu, backdrop blur, and uniform product cards.</p></article>
+        <article class="feat rv"><div class="feat-ic">🔎</div><h3>Faceted Filtering</h3><p>Category · price · stock · promotions — server‑rendered, RTL‑aware, cache‑friendly. Replaced a heavyweight third‑party plugin outright.</p></article>
+        <article class="feat rv"><div class="feat-ic">💌</div><h3>Cart Recovery in Hebrew</h3><p>Abandoned‑cart email sequences fully localized — live cart contents with product images, tuned timing, and tracked recovery performance.</p></article>
+        <article class="feat rv"><div class="feat-ic">📈</div><h3>SEO / GEO Layer</h3><p>GroceryStore LocalBusiness schema, rich product JSON‑LD, automated meta &amp; focus keyphrases for every product — including ones that don’t exist yet. GA4 + Search Console wired.</p></article>
+        <article class="feat rv"><div class="feat-ic">📨</div><h3>Owned Marketing</h3><p>Self‑hosted newsletter with admin dashboard &amp; CSV export, plus a true exit‑intent popup — once per session, only on real exit. WhatsApp click‑to‑chat &amp; floating cart.</p></article>
+        <article class="feat rv"><div class="feat-ic">📷</div><h3>Catalog Data Ops</h3><p>Recovered 575 corrupted imports with zero downtime, cross‑referenced a 7,334‑row supplier dataset, and shipped a phone‑camera barcode scanner for shop‑floor enrichment.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIVE DEMOS ============ -->
+  <section class="section band">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="eyebrow">Try it yourself</span>
+        <h2>The two flagship interactions, rebuilt as live demos.</h2>
+        <p>Faithful recreations of the production widgets — same logic, same RTL behavior, demo data only. Drag the slider. Tap the steppers.</p>
+      </div>
+      <div class="demos">
+
+        <!-- weight demo -->
+        <div class="demo rv">
+          <div class="demo-head"><b>⚖️ Sell‑by‑Weight</b><span class="demo-live">Live demo</span></div>
+          <div class="demo-body">
+            <div class="w-card">
+              <div class="w-name">🥑 אבוקדו טרי</div>
+              <div class="w-per num">₪12.90 <span>/ ק״ג · מחיר הדגמה</span></div>
+              <div class="w-stepper">
+                <button type="button" id="wDec" aria-label="Decrease weight">−</button>
+                <div class="w-val num"><b id="wKg">0.5</b><i>ק״ג</i></div>
+                <button type="button" id="wInc" aria-label="Increase weight">+</button>
+              </div>
+              <input type="range" class="w-range" id="wRange" min="500" max="10000" step="500" value="500" aria-label="Weight in grams">
+              <div class="w-scale num"><span>10 ק״ג</span><span>0.5 ק״ג</span></div>
+              <div class="w-presets" id="wPresets">
+                <button type="button" class="w-preset on" data-g="500">½ ק״ג</button>
+                <button type="button" class="w-preset" data-g="1000">1 ק״ג</button>
+                <button type="button" class="w-preset" data-g="2000">2 ק״ג</button>
+                <button type="button" class="w-preset" data-g="5000">5 ק״ג</button>
+              </div>
+              <div class="w-total"><span>סה״כ למשקל שנבחר</span><b class="num" id="wTotal">₪6.45</b></div>
+            </div>
+          </div>
+          <div class="demo-note">Integer‑gram math under the hood — zero floating‑point drift in cart totals.</div>
+        </div>
+
+        <!-- basket demo -->
+        <div class="demo rv">
+          <div class="demo-head"><b>🧺 Smart Ready‑Basket</b><span class="demo-live">Live demo</span></div>
+          <div class="demo-body">
+            <div class="b-card">
+              <div class="b-top"><span class="bi">🍞</span><span><b>סל שבת</b><small><span id="bCount" class="num">5</span> פריטים · נתוני הדגמה</small></span></div>
+              <div class="b-items" id="bItems">
+                <div class="b-row" data-price="12"><span class="b-nm">חלה מתוקה<small class="num">₪12 ליח׳</small></span><span class="b-stp"><button type="button" data-d="-1" aria-label="Less">−</button><b class="num" data-q>2</b><button type="button" data-d="1" aria-label="More">+</button></span></div>
+                <div class="b-row" data-price="25"><span class="b-nm">יין לקידוש<small class="num">₪25 ליח׳</small></span><span class="b-stp"><button type="button" data-d="-1" aria-label="Less">−</button><b class="num" data-q>1</b><button type="button" data-d="1" aria-label="More">+</button></span></div>
+                <div class="b-row" data-price="18"><span class="b-nm">מארז סלטים<small class="num">₪18 ליח׳</small></span><span class="b-stp"><button type="button" data-d="-1" aria-label="Less">−</button><b class="num" data-q>1</b><button type="button" data-d="1" aria-label="More">+</button></span></div>
+                <div class="b-row" data-price="32"><span class="b-nm">עוף שלם טרי<small class="num">₪32 ליח׳</small></span><span class="b-stp"><button type="button" data-d="-1" aria-label="Less">−</button><b class="num" data-q>1</b><button type="button" data-d="1" aria-label="More">+</button></span></div>
+              </div>
+              <div class="b-foot">
+                <div class="b-sum"><span>סה״כ הסל</span><b class="num" id="bTotal">₪99</b></div>
+                <button type="button" class="b-add" id="bAdd"><span>🛒</span><span id="bAddTxt">הוסף הכל לעגלה</span></button>
+              </div>
+            </div>
+          </div>
+          <div class="demo-note">In production: items resolve against the live catalog; out‑of‑stock lines skip gracefully.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODULES ============ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="eyebrow">Under the hood</span>
+        <h2>Ten systems, one coherent whole.</h2>
+        <p class="lead">Each capability lives in its own isolated unit — loaded independently, safe to disable, shipping its own assets.</p>
+      </div>
+      <div class="mods rv">
+        <div class="mod"><span class="no">01</span><span class="mi">🏠</span><span class="mt">Bespoke Homepage</span><span class="md">Aurora hero, trust bar, produce carousel, ready‑baskets, promotions, product grids, verified testimonial, newsletter.</span></div>
+        <div class="mod"><span class="no">02</span><span class="mi">⚖️</span><span class="mt">Weight Pricing</span><span class="md">Price/kg engine, live selector, cart &amp; order integration on a uniform ½‑kg standard.</span></div>
+        <div class="mod"><span class="no">03</span><span class="mi">🧺</span><span class="mt">Ready Baskets</span><span class="md">Curated bundles, per‑item steppers, bulk add‑to‑cart, stock‑aware skipping.</span></div>
+        <div class="mod"><span class="no">04</span><span class="mi">📋</span><span class="mt">Product Spec Sheet</span><span class="md">Kosher &amp; dietary badges, nutrition table, ingredients &amp; allergens, provenance — one uniform template for every product.</span></div>
+        <div class="mod"><span class="no">05</span><span class="mi">🔎</span><span class="mt">Product Filter</span><span class="md">Faceted, server‑side, plugin‑free filtering — category · price · stock · sale.</span></div>
+        <div class="mod"><span class="no">06</span><span class="mi">📨</span><span class="mt">Newsletter + Exit‑Intent</span><span class="md">Subscriber store, admin dashboard, CSV export, one‑time exit popup.</span></div>
+        <div class="mod"><span class="no">07</span><span class="mi">💌</span><span class="mt">Cart Recovery</span><span class="md">Hebrew abandoned‑cart email sequences with live cart contents &amp; product images.</span></div>
+        <div class="mod"><span class="no">08</span><span class="mi">🔍</span><span class="mt">SEO / GEO</span><span class="md">LocalBusiness + product schema, render‑time meta automation, GA4 &amp; Search Console.</span></div>
+        <div class="mod"><span class="no">09</span><span class="mi">🎠</span><span class="mt">Custom Carousels</span><span class="md">Drag‑to‑scroll, arrow nav, snap scrolling — dependency‑free vanilla JS.</span></div>
+        <div class="mod"><span class="no">10</span><span class="mi">📷</span><span class="mt">Barcode Toolkit</span><span class="md">Phone‑camera HTML5 scanner, pick‑list &amp; fast‑scan CSV workflows, supplier‑data matching.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARCHITECTURE ============ -->
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <span class="eyebrow rv">Architecture</span>
+      <div class="arch">
+<pre class="tree rv"><span class="c">// module‑per‑concern · load independently · disable safely</span>
+theme/
+├── <span class="b">Core</span>            <span class="c">design system · assets · Woo wiring</span>
+├── <span class="b">Homepage</span>        <span class="c">composable, data‑driven sections</span>
+├── <span class="b">Weight Pricing</span>  <span class="c">sell‑by‑weight engine (opt‑in)</span>
+├── <span class="b">Ready Baskets</span>   <span class="c">curated bundles + bulk cart</span>
+├── <span class="b">Product Spec</span>    <span class="c">uniform spec‑sheet template</span>
+├── <span class="b">Product Filter</span>  <span class="c">faceted server‑side filtering</span>
+├── <span class="b">Newsletter</span>      <span class="c">capture · export · exit‑intent</span>
+└── <span class="b">SEO / GEO</span>       <span class="c">structured data + meta</span></pre>
+        <div class="principles">
+          <div class="principle rv"><span class="pi">🧱</span><span><b>Isolated modules</b><span>No cross‑dependencies — disable any module, nothing else breaks.</span></span></div>
+          <div class="principle rv"><span class="pi">🪶</span><span><b>Zero heavy plugins</b><span>Filter, newsletter, carousels and popups built natively for speed and control.</span></span></div>
+          <div class="principle rv"><span class="pi">♻️</span><span><b>Graceful fallbacks</b><span>Every enhancement degrades safely — with <code style="font-family:var(--mono);font-size:12px">@supports</code> safety nets for older browsers.</span></span></div>
+          <div class="principle rv"><span class="pi">🌍</span><span><b>RTL‑first</b><span>Layout, carousels and interactions mirror correctly — Hebrew is not a retrofit.</span></span></div>
+          <div class="principle rv"><span class="pi">⚡</span><span><b>Cache‑aware</b><span>Asset strategy engineered around aggressive edge caching with content‑hash busting.</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENGINEERING NOTES ============ -->
+  <section class="section band">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="eyebrow">Field notes</span>
+        <h2>Six decisions worth reading about.</h2>
+      </div>
+      <div class="notes">
+        <div class="note rv">
+          <div class="nk">weight-engine.note</div>
+          <h3>Grams inside, kilograms outside</h3>
+          <p>Prices are defined per kg, but all internal math runs in <code>integer grams</code> — eliminating floating‑point drift in cart totals. Different weights of one product become separate cart lines via unique keys, and the per‑kg price is snapshotted at add‑to‑cart time so later edits never corrupt an open cart.</p>
+        </div>
+        <div class="note rv">
+          <div class="nk">carousel.note</div>
+          <h3>Drag‑to‑scroll that works over links</h3>
+          <p>Product cards are anchors wrapping images — native drag ghosting and navigation fight pointer capture. The fix: document‑level mouse events with <code>preventDefault</code>, <code>draggable=false</code>, click suppression after drag, and snap disabled mid‑drag. Buttery in RTL, on every browser tested.</p>
+        </div>
+        <div class="note rv">
+          <div class="nk">caching.note</div>
+          <h3>Surviving aggressive edge caching</h3>
+          <p>The production host minifies and re‑serves every asset under content‑hash URLs. The theme leans into it: new files earn new hashes automatically, critical overrides ship in dedicated late‑loading files, and <code>@supports</code> fallbacks keep old browsers from ever seeing broken glass.</p>
+        </div>
+        <div class="note rv">
+          <div class="nk">seo.note</div>
+          <h3>Meta for products that don’t exist yet</h3>
+          <p>Descriptions and focus keyphrases generate at render time via filter hooks — not stored per product. Every future product inherits rich, localized meta the moment it’s published. Zero maintenance, forever.</p>
+        </div>
+        <div class="note rv">
+          <div class="nk">recovery.note</div>
+          <h3>Un‑corrupting a catalog with zero downtime</h3>
+          <p>A bad CSV import spawned <code>575 duplicates</code> overnight. Recovery ran date‑scoped batch operations against the live store — trashing only the duplicates, verifying originals kept their images and categories, and cross‑checking final counts. No downtime, no lost products.</p>
+        </div>
+        <div class="note rv">
+          <div class="nk">barcode.note</div>
+          <h3>A barcode scanner on the owner’s phone</h3>
+          <p>Enrichment needed barcodes as a join key against a <code>7,334‑row</code> supplier dataset. Instead of hardware, the project shipped a self‑contained HTML5 scanner — phone camera, live decode, local storage, CSV export — served over HTTPS so it works anywhere in the store.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESIGN SYSTEM ============ -->
+  <section class="section band" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head rv">
+        <span class="eyebrow">Identity</span>
+        <h2>A design system that tastes fresh.</h2>
+        <p>Forest green and honey over warm paper — with orange spent on exactly one job: the call to action.</p>
+      </div>
+      <div class="sw-grid">
+        <div class="sw rv"><div class="chipc" style="background:#11261B"></div><div class="meta"><b>Forest</b><code>#11261B</code></div></div>
+        <div class="sw rv"><div class="chipc" style="background:#2F8F5B"></div><div class="meta"><b>Fresh Green</b><code>#2F8F5B</code></div></div>
+        <div class="sw rv"><div class="chipc" style="background:#E0A82E"></div><div class="meta"><b>Honey</b><code>#E0A82E</code></div></div>
+        <div class="sw rv"><div class="chipc" style="background:#E65F2B"></div><div class="meta"><b>CTA Orange</b><code>#E65F2B</code></div></div>
+        <div class="sw rv"><div class="chipc" style="background:#F9F8F6;border-bottom:1px solid rgba(255,255,255,.14)"></div><div class="meta"><b>Warm Paper</b><code>#F9F8F6</code></div></div>
+      </div>
+      <div class="ds-notes">
+        <div class="ds-note rv"><h4>Glassmorphism</h4><p>Layered blur, hairline borders and light sheen across cards, header and overlays.</p></div>
+        <div class="ds-note rv"><h4>Uniform geometry</h4><p>Product cards keep identical height, image framing and rhythm — whatever the content.</p></div>
+        <div class="ds-note rv"><h4>Considered motion</h4><p>Aurora gradients, Ken‑Burns hero, reveal‑on‑scroll — all behind <span style="font-family:var(--mono);font-size:12px">prefers-reduced-motion</span>.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="fmark">Super <span class="cart">Asulin</span></div>
+      <p>Designed &amp; engineered end‑to‑end — architecture, UI/UX system, front‑end, WooCommerce integration, SEO layer, analytics and catalog data tooling. Crafted for a real business, real customers, and real freshness. 🥬</p>
+      <div class="rule"></div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+  var root=document.getElementById('fcRoot');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ---------- aurora hero ---------- */
+  var c=document.getElementById('aurora');
+  if(c&&c.getContext){
+    var ctx=c.getContext('2d'),W,H,dpr=Math.min(window.devicePixelRatio||1,2);
+    var blobs=[
+      {x:.16,y:.14,r:.44,col:[47,143,91],ph:0},
+      {x:.84,y:.04,r:.37,col:[231,178,60],ph:1.9},
+      {x:.60,y:.58,r:.34,col:[76,184,120],ph:3.3},
+      {x:.30,y:.66,r:.30,col:[18,54,38],ph:5.1}
+    ];
+    var size=function(){W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);};
+    var draw=function(t){
+      ctx.clearRect(0,0,W,H);
+      ctx.globalCompositeOperation='lighter';
+      for(var i=0;i<blobs.length;i++){
+        var b=blobs[i];
+        var dx=reduce?0:Math.sin(t/3400+b.ph)*.05, dy=reduce?0:Math.cos(t/4100+b.ph)*.05;
+        var cx=(b.x+dx)*W, cy=(b.y+dy)*H, rad=b.r*Math.max(W,H);
+        var g=ctx.createRadialGradient(cx,cy,0,cx,cy,rad);
+        g.addColorStop(0,'rgba('+b.col[0]+','+b.col[1]+','+b.col[2]+',0.55)');
+        g.addColorStop(1,'rgba('+b.col[0]+','+b.col[1]+','+b.col[2]+',0)');
+        ctx.fillStyle=g;ctx.beginPath();ctx.arc(cx,cy,rad,0,6.2832);ctx.fill();
+      }
+      ctx.globalCompositeOperation='source-over';
+      if(!reduce)requestAnimationFrame(draw);
+    };
+    size();window.addEventListener('resize',size);
+    if(reduce){draw(0);}else{requestAnimationFrame(draw);}
+  }
+
+  /* ---------- reveal on scroll ---------- */
+  if(root){root.classList.add('js');}
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    Array.prototype.forEach.call(document.querySelectorAll('.rv'),function(el){io.observe(el);});
+  }else{
+    Array.prototype.forEach.call(document.querySelectorAll('.rv'),function(el){el.classList.add('in');});
+  }
+
+  /* ---------- weight demo ---------- */
+  var PER_KG=12.90, STEP=500, MIN=500, MAX=10000, grams=500;
+  var wKg=document.getElementById('wKg'), wTotal=document.getElementById('wTotal'),
+      wRange=document.getElementById('wRange'), wDec=document.getElementById('wDec'),
+      wInc=document.getElementById('wInc'), wPresets=document.getElementById('wPresets');
+  function kgText(g){ return String(Math.round(g/10)/100).replace(/\.?0+$/,'') || '0'; }
+  function wRender(){
+    if(wKg){wKg.textContent=kgText(grams);}
+    if(wRange){wRange.value=grams;}
+    if(wTotal){wTotal.textContent='₪'+(PER_KG*grams/1000).toFixed(2);}
+    if(wPresets){
+      Array.prototype.forEach.call(wPresets.querySelectorAll('.w-preset'),function(b){
+        b.classList.toggle('on', parseInt(b.getAttribute('data-g'),10)===grams);
+      });
+    }
+  }
+  function wSet(g){ g=Math.round(g/STEP)*STEP; if(g<MIN)g=MIN; if(g>MAX)g=MAX; grams=g; wRender(); }
+  if(wDec){wDec.addEventListener('click',function(){wSet(grams-STEP);});}
+  if(wInc){wInc.addEventListener('click',function(){wSet(grams+STEP);});}
+  if(wRange){wRange.addEventListener('input',function(){wSet(parseInt(wRange.value,10));});}
+  if(wPresets){wPresets.addEventListener('click',function(e){
+    var b=e.target.closest('.w-preset'); if(b){wSet(parseInt(b.getAttribute('data-g'),10));}
+  });}
+  wRender();
+
+  /* ---------- basket demo ---------- */
+  var bItems=document.getElementById('bItems'), bTotal=document.getElementById('bTotal'),
+      bCount=document.getElementById('bCount'), bAdd=document.getElementById('bAdd'),
+      bAddTxt=document.getElementById('bAddTxt');
+  function bRender(){
+    if(!bItems)return;
+    var total=0,count=0;
+    Array.prototype.forEach.call(bItems.querySelectorAll('.b-row'),function(row){
+      var q=parseInt(row.querySelector('[data-q]').textContent,10)||0;
+      total+=q*parseFloat(row.getAttribute('data-price'));
+      count+=q;
+    });
+    if(bTotal){bTotal.textContent='₪'+Math.round(total);}
+    if(bCount){bCount.textContent=count;}
+  }
+  if(bItems){
+    bItems.addEventListener('click',function(e){
+      var btn=e.target.closest('button[data-d]'); if(!btn)return;
+      var q=btn.parentElement.querySelector('[data-q]');
+      var v=Math.max(0,(parseInt(q.textContent,10)||0)+parseInt(btn.getAttribute('data-d'),10));
+      q.textContent=v; bRender();
+    });
+  }
+  if(bAdd){
+    bAdd.addEventListener('click',function(){
+      if(bAdd.classList.contains('done'))return;
+      bAdd.classList.add('done');
+      if(bAddTxt){bAddTxt.textContent='נוסף לעגלה ✓ (הדגמה)';}
+      setTimeout(function(){
+        bAdd.classList.remove('done');
+        if(bAddTxt){bAddTxt.textContent='הוסף הכל לעגלה';}
+      },2200);
+    });
+  }
+  bRender();
+})();
+</script>
