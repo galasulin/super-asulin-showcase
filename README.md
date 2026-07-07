@@ -249,16 +249,20 @@ Product enrichment needed barcodes as a join key against a 7,334‑row supplier 
 
 ## 🖼️ Gallery
 
-> Drop screenshots into `/screenshots` — the money shots:
+**🏠 Homepage** — aurora hero, sticky glass header, live trust bar & value props
+![Homepage hero](screenshots/01-homepage-hero.png)
 
-| | |
-|---|---|
-| `01-homepage-hero.png` | Aurora hero + trust bar |
-| `02-fresh-by-weight.png` | Produce carousel + live weight selector |
-| `03-ready-baskets.png` | Smart baskets with steppers |
-| `04-product-spec.png` | Uniform spec sheet — badges, nutrition, ingredients |
-| `05-filter.png` | Faceted sidebar filter |
-| `06-mobile.png` | Mobile experience |
+**⚖️ Sell‑by‑Weight Engine** — dietary badges under the title, price/kg, live slider (½‑kg steps), preset weights, real‑time total
+![Sell by weight](screenshots/02-fresh-by-weight.png)
+
+**🧺 Smart Ready‑Baskets** — curated bundles with per‑item quantity steppers and one‑tap bulk add
+![Ready baskets](screenshots/03-ready-baskets.png)
+
+**📋 Uniform Product Spec** — full nutrition table, ingredients & allergens, provenance — identical layout for every product
+![Product spec sheet](screenshots/04-product-spec.png)
+
+**🔎 Faceted Filter** — department navigation, price‑range slider, stock & sale toggles — RTL, server‑rendered
+![Product filter](screenshots/05-filter.png)
 
 ---
 
