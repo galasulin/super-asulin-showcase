@@ -222,6 +222,17 @@
   .shot .cap b{font-size:15.5px;letter-spacing:-.01em;flex:none}
   .shot .cap span{font-size:13.5px;color:var(--ink-2);line-height:1.5}
   @media(max-width:920px){.shot .cap{flex-direction:column;gap:3px}}
+  /* phone mockup */
+  .phone-wrap{display:flex;flex-direction:column;align-items:center;gap:20px;margin-top:8px}
+  .phone{width:300px;max-width:82vw;border-radius:42px;padding:13px;background:#0C1B12;
+    border:1px solid rgba(255,255,255,.14);box-shadow:0 46px 90px -34px rgba(11,26,17,.7),inset 0 0 0 2px rgba(255,255,255,.04)}
+  .phone .notch{width:120px;height:26px;background:#0C1B12;border-radius:0 0 16px 16px;margin:0 auto -13px;
+    position:relative;z-index:2}
+  .phone .screen{border-radius:30px;overflow:hidden;background:#fff;border:1px solid rgba(0,0,0,.2)}
+  .phone .screen img{width:100%;display:block}
+  .phone-cap{display:flex;align-items:baseline;gap:11px;max-width:420px;text-align:center;flex-wrap:wrap;justify-content:center}
+  .phone-cap b{font-size:15.5px;color:#fff}
+  .phone-cap span{font-size:13.5px;color:#a9c3b4}
 
   /* ================= FOOTER ================= */
   .foot{background:var(--ink);color:#cfe6d8;text-align:center;padding-block:72px;position:relative;overflow:hidden}
@@ -508,6 +519,24 @@ theme/
         <figure class="shot rv"><div class="bar"><i></i><i></i><i></i><span>homepage · smart baskets</span></div><img src="screenshots/03-ready-baskets.png" alt="Smart ready-baskets with quantity steppers" loading="lazy"><figcaption class="cap"><b>🧺 Ready‑Baskets</b><span>Curated bundles with per‑item steppers and one‑tap bulk add.</span></figcaption></figure>
         <figure class="shot rv"><div class="bar"><i></i><i></i><i></i><span>product · spec sheet</span></div><img src="screenshots/04-product-spec.png" alt="Uniform product spec sheet with nutrition table" loading="lazy"><figcaption class="cap"><b>📋 Product Spec</b><span>Full nutrition table, ingredients &amp; allergens, provenance — one uniform template.</span></figcaption></figure>
         <figure class="shot rv"><div class="bar"><i></i><i></i><i></i><span>category · filter</span></div><img src="screenshots/05-filter.png" alt="RTL faceted product filter sidebar" loading="lazy"><figcaption class="cap"><b>🔎 Faceted Filter</b><span>Department nav, price‑range slider, stock &amp; sale toggles — RTL, server‑rendered.</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOBILE ============ -->
+  <section class="section band" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head rv" style="margin-inline:auto;text-align:center">
+        <span class="eyebrow">Pocket‑sized</span>
+        <h2>Every pixel, mobile‑first.</h2>
+        <p>Hundreds of customers shop from a phone — so the phone came first. Hamburger nav, a full‑bleed hero, a two‑up trust bar, and touch‑friendly carousels.</p>
+      </div>
+      <div class="phone-wrap rv">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen"><img src="screenshots/06-mobile.png" alt="Super Asulin homepage on a mobile phone" loading="lazy"></div>
+        </div>
+        <div class="phone-cap"><b>📱 Mobile home</b><span>Real capture at 360 px — RTL, fluid type, and a fully responsive layout.</span></div>
       </div>
     </div>
   </section>

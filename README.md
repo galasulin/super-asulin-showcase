@@ -264,6 +264,9 @@ Product enrichment needed barcodes as a join key against a 7,334‑row supplier 
 **🔎 Faceted Filter** — department navigation, price‑range slider, stock & sale toggles — RTL, server‑rendered
 ![Product filter](screenshots/05-filter.png)
 
+**📱 Mobile** — the full experience on a phone: hamburger nav, hero, and a 2‑up trust bar
+<img src="screenshots/06-mobile.png" alt="Mobile experience" width="320">
+
 ---
 
 <div align="center">
