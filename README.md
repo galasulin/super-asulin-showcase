@@ -1,10 +1,10 @@
 <div align="center">
 
+<img src="assets/banner.png" alt="Super Asulin — Premium RTL Grocery E-Commerce" width="100%">
+
 <br/>
 
-# 🛒 Super Asulin
-
-### Premium RTL Grocery E‑Commerce — a bespoke WordPress + WooCommerce platform<br/>built end‑to‑end for a real neighborhood supermarket.
+### A bespoke WordPress + WooCommerce platform, built end‑to‑end for a real neighborhood supermarket.
 
 *Boutique design system · Sell‑by‑weight engine · One‑click smart baskets · Liquid‑glass UI · Catalog data ops · SEO/GEO*
 
@@ -266,6 +266,33 @@ Product enrichment needed barcodes as a join key against a 7,334‑row supplier 
 
 **📱 Mobile** — the full experience on a phone: hamburger nav, hero, and a 2‑up trust bar
 <img src="screenshots/06-mobile.png" alt="Mobile experience" width="320">
+
+---
+
+## 💥 Results & Impact
+
+- 🎯 **A brand, not a template** — the store now carries a distinct visual identity no off‑the‑shelf theme could give it.
+- 🛒 **Features no local competitor offers** — true sell‑by‑weight and one‑click smart baskets turn browsing into buying.
+- 🧭 **Fresh produce sold *its* way** — by the kilo, with a live price, exactly how customers think about it.
+- ♻️ **Lower maintenance & cost** — heavyweight paid plugins replaced by native modules; less to break, nothing to renew.
+- 🔍 **Found on the map** — structured data + automated meta make the store legible to Google and AI answer engines.
+- 📱 **Mobile‑first for a mobile audience** — where most grocery shopping actually happens.
+
+---
+
+## 🧠 Skills Demonstrated
+
+`Front‑end Architecture` · `WordPress Theme Development` · `WooCommerce Deep Integration` · `Vanilla JS` · `Modern CSS / Glassmorphism` · `RTL / i18n` · `UI/UX & Design Systems` · `Performance & Caching` · `SEO / Structured Data` · `Analytics (GA4)` · `Catalog Data Engineering` · `Python Tooling`
+
+---
+
+## 🗺️ What's Next
+
+- [ ] **PWA** — installable, offline‑ready storefront
+- [ ] **Loyalty & coupons** module
+- [ ] **Live delivery tracking** for same‑day orders
+- [ ] **A/B testing** on the sell‑by‑weight & basket flows
+- [ ] **More curated baskets** driven by seasonal & purchase data
 
 ---
 
