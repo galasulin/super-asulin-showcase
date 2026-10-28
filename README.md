@@ -304,6 +304,8 @@ Designed and built end-to-end by **[Gal Asulin](https://github.com/galasulin)** 
 
 <br/>
 
+**Built by [Gal Asulin](https://github.com/galasulin), IT Manager**
+
 <sub>Barcode tooling (open source): <a href="https://github.com/galasulin/supermarket-barcode-scanner">supermarket-barcode-scanner</a></sub>
 
 <br/>
