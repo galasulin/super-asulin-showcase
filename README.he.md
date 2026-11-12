@@ -56,13 +56,18 @@
 <tr>
 <td width="33%"><a href="screenshots/04-product-spec.png"><img src="screenshots/04-product-spec.png" width="100%" alt="דף מפרט מוצר"></a><br><sub><b>דף מפרט מוצר</b> · ערכים תזונתיים, אלרגנים, ארץ ייצור</sub></td>
 <td width="33%"><a href="screenshots/05-filter.png"><img src="screenshots/05-filter.png" width="100%" alt="סינון מוצרים"></a><br><sub><b>סינון רב-ממדי</b> · מחלקות, טווח מחירים, מלאי, מבצע</sub></td>
+<td width="33%"><a href="screenshots/07-product-page.png"><img src="screenshots/07-product-page.png" width="100%" alt="דף מוצר מלא"></a><br><sub><b>דף מוצר מלא</b> · תגי כשרות ומקור, ערכים תזונתיים, רכיבים, מוצרים קשורים</sub></td>
+</tr>
+<tr>
+<td width="33%"><a href="screenshots/08-cart-by-weight.png"><img src="screenshots/08-cart-by-weight.png" width="100%" alt="סל עם מוצר במשקל"></a><br><sub><b>סל עם מוצר במשקל</b> · המשקל שנבחר בשורה, פס התקדמות למשלוח חינם</sub></td>
+<td width="33%"></td>
 <td width="33%"></td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center"><a href="screenshots/06-mobile.png"><img src="screenshots/06-mobile.png" width="220" alt="החוויה במובייל"></a><br><sub><b>מובייל</b> · תפריט המבורגר, כותרת, פס אמינות בשתי עמודות</sub></td>
+<td align="center"><a href="screenshots/06-mobile.png"><img src="screenshots/06-mobile.png" width="220" alt="החוויה במובייל"></a><br><sub><b>מובייל</b> · ‏390×844: כותרת, קרוסלת מחלקות, חיפוש בכותרת</sub></td>
 </tr>
 </table>
 
@@ -303,7 +308,7 @@ super-asulin-showcase/
 ├── showcase.html        Redirect to the showcase page
 ├── .nojekyll            Serve the site as-is on GitHub Pages
 ├── assets/banner.png    Social preview image (1280×640)
-├── screenshots/         01–05 desktop (1920 px wide) · 06 mobile (360 px)
+├── screenshots/         01, 03, 05 desktop 1920 px · 02, 04, 07, 08 desktop 1440×900 @2x · 06 mobile 390×844 @3x
 └── docs/showcase/       hero.png · architecture.png
 ```
 

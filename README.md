@@ -54,13 +54,18 @@
 <tr>
 <td width="33%"><a href="screenshots/04-product-spec.png"><img src="screenshots/04-product-spec.png" width="100%" alt="Product spec sheet"></a><br><sub><b>Product spec sheet</b> · nutrition, allergens, provenance</sub></td>
 <td width="33%"><a href="screenshots/05-filter.png"><img src="screenshots/05-filter.png" width="100%" alt="Product filter"></a><br><sub><b>Faceted filter</b> · departments, price range, stock, sale</sub></td>
+<td width="33%"><a href="screenshots/07-product-page.png"><img src="screenshots/07-product-page.png" width="100%" alt="Full product page"></a><br><sub><b>Full product page</b> · kosher and origin badges, nutrition, ingredients, related products</sub></td>
+</tr>
+<tr>
+<td width="33%"><a href="screenshots/08-cart-by-weight.png"><img src="screenshots/08-cart-by-weight.png" width="100%" alt="Cart with a weighed item"></a><br><sub><b>Cart with a weighed item</b> · chosen weight on the line, free-delivery progress bar</sub></td>
+<td width="33%"></td>
 <td width="33%"></td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center"><a href="screenshots/06-mobile.png"><img src="screenshots/06-mobile.png" width="220" alt="Mobile experience"></a><br><sub><b>Mobile</b> · hamburger nav, hero, 2-up trust bar</sub></td>
+<td align="center"><a href="screenshots/06-mobile.png"><img src="screenshots/06-mobile.png" width="220" alt="Mobile experience"></a><br><sub><b>Mobile</b> · 390×844: header, category carousel, hero search</sub></td>
 </tr>
 </table>
 
@@ -301,7 +306,7 @@ super-asulin-showcase/
 ├── showcase.html        Redirect to the showcase page
 ├── .nojekyll            Serve the site as-is on GitHub Pages
 ├── assets/banner.png    Social preview image (1280×640)
-├── screenshots/         01–05 desktop (1920 px wide) · 06 mobile (360 px)
+├── screenshots/         01, 03, 05 desktop 1920 px · 02, 04, 07, 08 desktop 1440×900 @2x · 06 mobile 390×844 @3x
 └── docs/showcase/       hero.png · architecture.png
 ```
 
